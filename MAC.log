@@ -1,0 +1,6 @@
+﻿
+2024-11-24 14:34:17,408 - INFO - Waiting for metrics...
+2024-11-24 14:34:17,409 - INFO - Waiting for notifications...
+2024-11-24 14:34:18,405 - INFO - Sent metrics: {'cpu_usage': 0.0, 'memory_usage': 13.1, 'disk_io': 1048434688, 'disk_usage': 0.1, 'process_count': 1, 'network_io_sent': 5649, 'network_io_recv': 6213}
+2024-11-24 14:34:18,406 - INFO - Received metrics: {'cpu_usage': 0.0, 'memory_usage': 13.1, 'disk_io': 1048434688, 'disk_usage': 0.1, 'process_count': 1, 'network_io_sent': 5649, 'network_io_recv': 6213}
+2024-11-24 14:34:20,948 - INFO - ALERT: High Disk I/O Usage!

@@ -1,0 +1,29 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5673:5672"
+      - "15673:15672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "check_port_connectivity"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  monitoring:
+    build: .
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      - RABBITMQ_HOST=rabbitmq
+    volumes:
+      - type: bind
+        source: ./MAC.log
+        target: /app/MAC.log
+    healthcheck:
+      test: ["CMD", "ps", "aux", "|", "grep", "python"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
