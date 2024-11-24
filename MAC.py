@@ -33,7 +33,7 @@ class RabbitMQConnection:
             try:
                 rabbitmq_host = os.environ.get('RABBITMQ_HOST', 'localhost')
                 self.connection = pika.BlockingConnection(
-                    pika.ConnectionParameters(host=rabbitmq_host)
+                    pika.ConnectionParameters(host=rabbitmq_host, heartbeat=180)
                 )
                 self.channel = self.connection.channel()
                 self.channel.queue_declare(queue=self.queue_name)
